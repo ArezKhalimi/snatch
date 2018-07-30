@@ -1,14 +1,13 @@
 import asyncio
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor
+
 import requests
 import tablib
 
-from config import SITES, TOKEN
-# SITES = ('cnn.com', )
+from config import SITES, TOKEN, SELECTED_MOUNTH
 
 
-mounth = '2018-06'
 filename = 'visits_{}.xls'.format(datetime.now().isoformat(' ', 'seconds'))
 
 links = [
@@ -18,8 +17,8 @@ links = [
 
 payload = {
     'api_key': TOKEN,
-    'start_date': mounth,
-    'end_date': mounth,
+    'start_date': SELECTED_MOUNTH,
+    'end_date': SELECTED_MOUNTH,
     'main_domain_only': True,
     'granularity': 'monthly',
 }
